@@ -9,7 +9,7 @@ Contact form class definitions.
 import logging
 from smtplib import SMTPException
 
-from django import forms
+import floppyforms as forms
 from django.core import mail
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
