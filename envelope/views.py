@@ -8,10 +8,8 @@ Views used to process the contact form.
 
 import logging
 
-from django.contrib import messages
 from django.http import HttpResponseBadRequest
 from django.shortcuts import redirect
-from django.utils.translation import ugettext_lazy as _
 from django.views.generic import FormView
 
 from envelope import signals
@@ -43,7 +41,7 @@ class ContactView(FormView):
 
     ``form_kwargs``
         Additional kwargs to be used in the creation of the form. Use
-        with :class:`envelope.forms.BaseContactForm` form arguments for
+        with :class:`envelope.forms.ContactForm` form arguments for
         dynamic customization of the form.
 
     ``template_name``
@@ -78,9 +76,9 @@ class ContactView(FormView):
         if user.is_authenticated():
             # the user might not have a full name set in the model
             if user.get_full_name():
-                sender = '%s (%s)' % (user.username, user.get_full_name())
+                sender = '%s (%s)' % (user.get_username(), user.get_full_name())
             else:
-                sender = user.username
+                sender = user.get_username()
             initial.update({
                 'sender': sender,
                 'email': user.email,
@@ -94,28 +92,22 @@ class ContactView(FormView):
 
     def form_valid(self, form):
         """
-        Sends the message and redirects the user somewhere.
+        Sends the message and redirects the user to ``success_url``.
         """
         responses = signals.before_send.send(sender=self.__class__,
                                              request=self.request,
                                              form=form)
         for (receiver, response) in responses:
             if not response:
-                error_message = _("Rejected by %s") % receiver.__name__
-                return HttpResponseBadRequest(error_message)
+                logger.warning("Rejected by %s", receiver.__name__)
+                return HttpResponseBadRequest()
         form.save()
-        messages.info(self.request,
-                      _("Thank you for your message."),
-                      fail_silently=True)
         return redirect(self.get_success_url())
 
     def form_invalid(self, form):
         """
         When the form has errors, display it again.
         """
-        messages.error(self.request,
-                       _("There was en error in the contact form."),
-                       fail_silently=True)
         return self.render_to_response(self.get_context_data(form=form))
 
 
