@@ -6,6 +6,7 @@ trunk
 -----
 
  - Django 2.1, 2.2 compatibility
+ - Dropped support for Python 2.
 
 1.3.0
 -----

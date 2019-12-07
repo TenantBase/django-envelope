@@ -1,7 +1,3 @@
-# -*- coding: utf-8 -*-
-
-from __future__ import unicode_literals
-
 """
 Views used to process the contact form.
 """
@@ -71,12 +67,12 @@ class ContactView(FormView):
         """
         Automatically fills form fields for authenticated users.
         """
-        initial = super(ContactView, self).get_initial().copy()
+        initial = super().get_initial().copy()
         user = self.request.user
         if user.is_authenticated() if callable(user.is_authenticated) else user.is_authenticated:
             # the user might not have a full name set in the model
             if user.get_full_name():
-                sender = '%s (%s)' % (user.get_username(), user.get_full_name())
+                sender = '{} ({})'.format(user.get_username(), user.get_full_name())
             else:
                 sender = user.get_username()
             initial.update({
@@ -86,7 +82,7 @@ class ContactView(FormView):
         return initial
 
     def get_form_kwargs(self):
-        kwargs = super(ContactView, self).get_form_kwargs()
+        kwargs = super().get_form_kwargs()
         kwargs.update(self.form_kwargs)
         return kwargs
 

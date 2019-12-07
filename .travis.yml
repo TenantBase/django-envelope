@@ -4,10 +4,6 @@ python:
     - "3.5"
     - "3.6"
 env:
-  - TOXENV=py27-dj18
-  - TOXENV=py27-dj19
-  - TOXENV=py27-dj110
-  - TOXENV=py27-dj111
   - TOXENV=py34-dj18
   - TOXENV=py34-dj19
   - TOXENV=py34-dj110

@@ -1,7 +1,3 @@
-# -*- coding: utf-8 -*-
-
-from __future__ import unicode_literals
-
 """
 Contact form class definitions.
 """
@@ -65,7 +61,7 @@ class ContactForm(forms.Form):
         for kwarg in list(kwargs):
             if hasattr(self, kwarg):
                 setattr(self, kwarg, kwargs.pop(kwarg))
-        super(ContactForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def save(self):
         """
