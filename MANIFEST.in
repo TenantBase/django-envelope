@@ -1,6 +1,7 @@
 include APACHE_LICENSE
 include LICENSE
 include README.rst
+include AUTHORS.rst
 include MANIFEST.in
 include requirements.txt
 recursive-exclude * __pycache__

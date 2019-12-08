@@ -2,8 +2,8 @@
 Changelog
 =========
 
-trunk
------
+1.4 (unreleased)
+----------------
 
  - Added support for Django 2.2, 3.0.
  - Dropped support for Python 2, python 3.4 and Django 2.1.
