@@ -6,6 +6,9 @@ def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 
+with open('requirements.txt', 'r') as file:
+    reqs = [line for line in file.readlines() if not line.strip().startswith('#')]
+
 setup(
     name='django-envelope',
     version=__import__('envelope').__version__,
@@ -16,7 +19,7 @@ setup(
     url='http://github.com/zsiciarz/django-envelope',
     download_url='http://pypi.python.org/pypi/django-envelope',
     license='MIT',
-    install_requires=['Django>=1.8'],
+    install_requires=reqs,
     packages=find_packages(exclude=['example_project', 'tests']),
     include_package_data=True,
     classifiers=[

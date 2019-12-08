@@ -46,7 +46,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'APP_DIRS': True,
         'DIRS': (
-            os.path.join(BASE_DIR, 'tests', 'templates'),
+            os.path.join(BASE_DIR, 'test_project', 'templates'),
         ),
         'OPTIONS': {
             'context_processors': (
@@ -63,7 +63,7 @@ TEMPLATES = [
     }
 ]
 
-ROOT_URLCONF = 'tests.urls'
+ROOT_URLCONF = 'urls'
 
 EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
 
@@ -74,3 +74,4 @@ PASSWORD_HASHERS = {
 }
 
 logging.getLogger('envelope').addHandler(logging.NullHandler())
+

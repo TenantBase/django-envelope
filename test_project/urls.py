@@ -6,7 +6,6 @@ from envelope.views import ContactView
 class SubclassedContactView(ContactView):
     pass
 
-
 urlpatterns = [
     url(r'', include('envelope.urls')),
     url(r'^class_contact/', ContactView.as_view(), name='class_contact'),
