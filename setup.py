@@ -10,7 +10,7 @@ with open('requirements.txt', 'r') as file:
     reqs = [line for line in file.readlines() if not line.strip().startswith('#')]
 
 setup(
-    name='django-envelope',
+    name='django-envelope-updated',
     version=__import__('envelope').__version__,
     description='A contact form app for Django',
     long_description=read('README.rst'),
