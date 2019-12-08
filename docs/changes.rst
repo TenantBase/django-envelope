@@ -5,8 +5,8 @@ Changelog
 trunk
 -----
 
- - Django 2.1, 2.2 compatibility
- - Dropped support for Python 2.
+ - Added support for Django 2.2, 3.0.
+ - Dropped support for Python 2, python 3.4 and Django 2.1.
 
 1.3.0
 -----
