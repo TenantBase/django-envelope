@@ -1,8 +1,6 @@
 import logging
 import os
 
-import django
-
 try:
     import honeypot
 except ImportError:
@@ -74,4 +72,3 @@ PASSWORD_HASHERS = {
 }
 
 logging.getLogger('envelope').addHandler(logging.NullHandler())
-
