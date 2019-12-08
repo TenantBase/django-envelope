@@ -17,13 +17,13 @@ python:
 
 install:
   - pip install tox-travis
-  - if [ "$TRAVIS_PYTHON_VERSION" = "3.6" ]; then pip install coveralls -r requirements.txt; fi
+  - if [ "$TRAVIS_PYTHON_VERSION" = "3.6" ]; then pip install coveralls django -r test_project/requirements.txt; fi
 
 script:
   # Run against all the Python interpreter and Django versions specified in the tox.ini file.
   - tox
   # Coveralls only needs to run once - so run it against just one Python interpreter.
-  - if [ "$TRAVIS_PYTHON_VERSION" = "3.6" ]; then cd test_project && pip install django==2.2 && coverage run manage.py test; fi
+  - if [ "$TRAVIS_PYTHON_VERSION" = "3.6" ]; then cd test_project && coverage run manage.py test; fi
 
 after_success:
   - if [ "$TRAVIS_PYTHON_VERSION" = "3.6" ]; then coveralls; fi
