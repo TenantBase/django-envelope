@@ -2,8 +2,8 @@
 Changelog
 =========
 
-1.5 (unreleased)
-----------------
+1.4.1 (2019-12-08)
+------------------
 
 - Bug fix: django-honeypot should be optional.
 
